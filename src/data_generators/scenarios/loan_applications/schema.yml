@@ -1,0 +1,40 @@
+name: "loan_applications"
+description: "Synthetic loan application records for financial analysis."
+
+fields:
+  - name: loan_id
+    type: string
+    description: "Unique loan identifier like LN0001"
+  - name: customer_id
+    type: string
+    description: "Customer identifier like CUST0001"
+  - name: created_at
+    type: datetime
+    description: "Application creation timestamp"
+  - name: amount
+    type: float
+    description: "Requested loan amount (5000–10000)"
+  - name: interest_rate
+    type: float
+    description: "Nominal annual interest rate (11–14%)"
+  - name: tenure_months
+    type: integer
+    description: "Loan tenure in months (12, 24, 36, 48, 60)"
+  - name: status
+    type: category
+    values: ["REJECTED", "PENDING", "APPROVED", "CLOSED"]
+  - name: product_type
+    type: category
+    values: ["AUTO", "PERSONAL", "HOME"]
+  - name: branch
+    type: category
+    values: ["Pokhara", "Biratnagar", "Kathmandu"]
+  - name: credit_score_band
+    type: category
+    values: ["LOW", "MEDIUM", "HIGH"]
+
+constraints:
+  - "loan_id is unique per row"
+  - "amount is between 5000 and 10000, usually in 1000 steps"
+  - "interest_rate between 11 and 14"
+  - "tenure_months is one of [12, 24, 36, 48, 60]"

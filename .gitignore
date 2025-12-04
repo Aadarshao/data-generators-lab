@@ -1,0 +1,19 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+
+# Virtual env
+.venv/
+
+# VS Code
+.vscode/
+
+# Data
+data/raw/
+.ipynb_checkpoints/
+
+# OS
+.DS_Store
+Thumbs.db

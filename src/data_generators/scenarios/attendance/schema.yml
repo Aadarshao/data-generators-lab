@@ -1,0 +1,21 @@
+name: "employee_attendance"
+description: "Synthetic employee attendance records for Spark / ETL demos."
+
+entities:
+  employees:
+    fields:
+      - name: employee_id
+        type: integer
+        min: 1
+        max: 500
+      - name: department
+        type: category
+        values: ["HR", "Finance", "Engineering", "Sales", "Support"]
+
+  attendance_records:
+    approx_rows_per_employee: 220
+
+constraints:
+  - "No records on weekends unless status in ['ABSENT', 'WFH']"
+  - "If status == 'ABSENT', then check_in and check_out must be NULL"
+  - "If status == 'LATE', check_in must be > 09:15"

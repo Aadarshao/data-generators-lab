@@ -1,0 +1,8 @@
+pandas>=2.0
+faker>=24.0
+pyyaml>=6.0
+
+[dev]
+pytest>=8.0
+black>=24.0
+ruff>=0.5

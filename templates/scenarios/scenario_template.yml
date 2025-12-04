@@ -1,0 +1,4 @@
+name: "my_new_scenario"
+description: "Describe the scenario here."
+
+# Add your entities/fields/constraints as needed.

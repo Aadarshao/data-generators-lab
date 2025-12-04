@@ -1,0 +1,19 @@
+name: "spark_logs"
+description: "Synthetic Spark job/stage/task log events."
+
+fields:
+  - name: ts
+    type: timestamp
+  - name: app_id
+    type: string
+  - name: job_id
+    type: integer
+  - name: stage_id
+    type: integer
+  - name: task_id
+    type: integer
+  - name: level
+    type: category
+    values: ["INFO", "WARN", "ERROR"]
+  - name: message
+    type: string

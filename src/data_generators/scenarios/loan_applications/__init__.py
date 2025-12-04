@@ -1,0 +1,1 @@
+"""Loan applications scenario for financial analysis."""

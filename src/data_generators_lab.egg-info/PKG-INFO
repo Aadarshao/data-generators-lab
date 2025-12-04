@@ -1,0 +1,38 @@
+Metadata-Version: 2.4
+Name: data-generators-lab
+Version: 0.1.0
+Summary: Synthetic data generators for data engineering, science, and analytics.
+Author: Aadarsh Shrestha
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Intended Audience :: Developers
+Classifier: Intended Audience :: Science/Research
+Requires-Python: >=3.10
+Description-Content-Type: text/markdown
+License-File: LICENSE
+Requires-Dist: pandas>=2.0
+Requires-Dist: faker>=24.0
+Requires-Dist: pyyaml>=6.0
+Provides-Extra: dev
+Requires-Dist: pytest>=8.0; extra == "dev"
+Requires-Dist: black>=24.0; extra == "dev"
+Requires-Dist: ruff>=0.5; extra == "dev"
+Dynamic: license-file
+
+# Data Generators Lab
+
+Synthetic and sample data generators for data engineering, data science,
+and analytics workflows.
+
+- Realistic scenarios (attendance, Spark logs, billing, ecommerce, etc.)
+- Reusable Python package (`data_generators`)
+- Ready for notebooks, Spark projects, and open-source usage.
+
+## Quick start (after bootstrap)
+
+```bash
+python -m venv .venv
+.venv/Scripts/activate  # on Windows PowerShell
+pip install -e .
+python -m data_generators --help
+```

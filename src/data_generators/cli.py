@@ -10,6 +10,11 @@ from .scenarios.loan_applications.generator import (
     LoanApplicationsConfig,
 )
 
+from .scenarios.bank_transactions.generator import (
+    BankTransactionsGenerator,
+    BankTransactionsConfig,
+)
+
 
 def build_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(
@@ -22,7 +27,7 @@ def build_parser() -> argparse.ArgumentParser:
     gen = subparsers.add_parser("generate", help="Generate data for a scenario.")
     gen.add_argument(
         "scenario",
-        choices=["attendance", "spark_logs", "loans"],
+        choices=["attendance", "spark_logs", "loans", "bank_transactions"],
         help="Scenario name.",
     )
     gen.add_argument(
@@ -67,6 +72,14 @@ def main(argv: list[str] | None = None) -> None:
         if args.rows is not None:
             config.num_rows = args.rows
         gen = LoanApplicationsGenerator(config)
+        df = gen.generate()
+
+    # NEW BLOCK
+    elif args.scenario == "bank_transactions":
+        config = BankTransactionsConfig()
+        if args.rows is not None:
+            config.num_rows = args.rows
+        gen = BankTransactionsGenerator(config)
         df = gen.generate()
 
     else:

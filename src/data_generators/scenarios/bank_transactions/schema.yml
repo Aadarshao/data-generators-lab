@@ -1,0 +1,51 @@
+# Schema for synthetic bank transaction dataset
+
+fields:
+  transaction_id:
+    type: string
+    description: Unique transaction identifier
+
+  customer_id:
+    type: string
+    description: Associated customer ID
+
+  timestamp:
+    type: datetime
+    description: Timestamp of transaction
+
+  amount:
+    type: float
+    description: Transaction amount
+
+  transaction_type:
+    type: category
+    choices:
+      - debit
+      - credit
+    description: Whether money was debited or credited
+
+  merchant:
+    type: category
+    description: Merchant or source of the transaction
+
+  merchant_category:
+    type: category
+    description: Transaction category (grocery, travel, utilities...)
+
+  location:
+    type: string
+    description: Transaction location (city)
+
+  channel:
+    type: category
+    choices:
+      - online
+      - card_swipe
+      - atm
+      - upi
+      - net_banking
+    description: Mode/channel of transaction
+
+  is_fraud:
+    type: int
+    description: 1 = fraudulent transaction, 0 = legitimate

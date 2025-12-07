@@ -1,0 +1,77 @@
+# Schema for synthetic credit card spending dataset
+
+fields:
+  transaction_id:
+    type: string
+    description: Unique transaction identifier
+
+  customer_id:
+    type: string
+    description: Customer identifier
+
+  card_id:
+    type: string
+    description: Credit card identifier
+
+  card_network:
+    type: category
+    choices:
+      - VISA
+      - MASTERCARD
+      - AMEX
+      - RUPAY
+    description: Card network brand
+
+  txn_timestamp:
+    type: datetime
+    description: Timestamp of the transaction
+
+  amount:
+    type: float
+    description: Transaction amount in card currency
+
+  currency:
+    type: category
+    choices:
+      - NPR
+      - USD
+      - EUR
+      - INR
+    description: Currency of the transaction
+
+  merchant:
+    type: string
+    description: Merchant name
+
+  merchant_category:
+    type: category
+    description: Merchant category (MCC-like)
+
+  channel:
+    type: category
+    choices:
+      - POS
+      - ECOM
+      - ATM
+      - UPI
+    description: Channel used for the transaction
+
+  country:
+    type: string
+    description: Country of merchant
+
+  city:
+    type: string
+    description: City of merchant
+
+  is_international:
+    type: int
+    description: 1 if international transaction, else 0
+
+  is_online:
+    type: int
+    description: 1 if online/e-commerce transaction, else 0
+
+  is_fraud:
+    type: int
+    description: 1 if flagged as fraud, else 0

@@ -17,7 +17,10 @@ from .scenarios.credit_card_spend.generator import (
     CreditCardSpendGenerator,
     CreditCardSpendConfig,
 )
-
+from .scenarios.loan_repayments.generator import (
+    LoanRepaymentsGenerator,
+    LoanRepaymentsConfig,
+)
 
 def build_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(
@@ -36,6 +39,7 @@ def build_parser() -> argparse.ArgumentParser:
             "loans",
             "bank_transactions",
             "credit_card_spend",
+            "loan_repayments",
         ],
         help="Scenario name.",
     )
@@ -96,6 +100,17 @@ def main(argv: list[str] | None = None) -> None:
             config.num_rows = args.rows
         gen = CreditCardSpendGenerator(config)
         df = gen.generate()
+    
+    elif args.scenario == "loan_repayments":
+        config = LoanRepaymentsConfig()
+        if args.rows is not None:
+            # rows is approximate; scale number of loans
+            # Example: assume ~24 rows per loan on average
+            approx_loans = max(1, args.rows // 24)
+            config.num_loans = approx_loans
+        gen = LoanRepaymentsGenerator(config)
+        df = gen.generate()
+
 
     else:
         parser.error(f"Unknown scenario: {args.scenario}")

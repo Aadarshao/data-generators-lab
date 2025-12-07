@@ -1,0 +1,47 @@
+# Schema for synthetic loan repayment schedules
+
+fields:
+  loan_id:
+    type: string
+    description: Loan identifier (links to loan applications)
+
+  customer_id:
+    type: string
+    description: Customer identifier
+
+  schedule_date:
+    type: date
+    description: Scheduled EMI date
+
+  installment_number:
+    type: int
+    description: Installment sequence number starting from 1
+
+  emi_amount:
+    type: float
+    description: Fixed EMI amount per schedule
+
+  principal_component:
+    type: float
+    description: Principal portion of EMI
+
+  interest_component:
+    type: float
+    description: Interest portion of EMI
+
+  remaining_principal:
+    type: float
+    description: Remaining principal after this schedule
+
+  status:
+    type: category
+    description: Payment status for this installment
+    choices:
+      - PAID
+      - DUE
+      - LATE
+      - DEFAULTED
+
+  is_missed_payment:
+    type: int
+    description: 1 if the installment was missed or late, else 0

@@ -1,0 +1,1 @@
+"""Loan repayment schedule scenario."""

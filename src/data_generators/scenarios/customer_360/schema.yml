@@ -1,0 +1,74 @@
+# Schema for synthetic Customer 360 profiles
+
+fields:
+  customer_id:
+    type: string
+    description: Unique customer identifier
+
+  full_name:
+    type: string
+    description: Customer full name
+
+  age:
+    type: int
+    description: Customer age in years
+
+  gender:
+    type: category
+    choices:
+      - M
+      - F
+      - O
+    description: Gender label
+
+  country:
+    type: string
+    description: Country of residence
+
+  city:
+    type: string
+    description: City of residence
+
+  income_annual:
+    type: float
+    description: Estimated annual income
+
+  occupation:
+    type: category
+    description: High-level occupation category
+
+  risk_segment:
+    type: category
+    choices:
+      - LOW
+      - MEDIUM
+      - HIGH
+    description: Credit / behavioral risk segment
+
+  has_credit_card:
+    type: int
+    description: 1 if customer holds at least one credit card, else 0
+
+  has_loan:
+    type: int
+    description: 1 if customer holds at least one active loan, else 0
+
+  has_savings_account:
+    type: int
+    description: 1 if customer has a savings/deposit account, else 0
+
+  num_products:
+    type: int
+    description: Number of financial products held
+
+  total_balance:
+    type: float
+    description: Aggregated balance estimate across products
+
+  churn_score:
+    type: float
+    description: Score between 0 and 1 indicating likelihood of churn
+
+  engagement_score:
+    type: float
+    description: Score between 0 and 1 indicating engagement/usage level

@@ -21,6 +21,10 @@ from .scenarios.loan_repayments.generator import (
     LoanRepaymentsGenerator,
     LoanRepaymentsConfig,
 )
+from .scenarios.customer_360.generator import (
+    Customer360Generator,
+    Customer360Config,
+)
 
 def build_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(
@@ -40,6 +44,7 @@ def build_parser() -> argparse.ArgumentParser:
             "bank_transactions",
             "credit_card_spend",
             "loan_repayments",
+            "customer_360",
         ],
         help="Scenario name.",
     )
@@ -110,6 +115,14 @@ def main(argv: list[str] | None = None) -> None:
             config.num_loans = approx_loans
         gen = LoanRepaymentsGenerator(config)
         df = gen.generate()
+        
+    elif args.scenario == "customer_360":
+        config = Customer360Config()
+        if args.rows is not None:
+            config.num_customers = args.rows
+        gen = Customer360Generator(config)
+        df = gen.generate()
+
 
 
     else:
